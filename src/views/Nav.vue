@@ -1,15 +1,16 @@
 <template>
   <nav>
-    <router-link to="/money" class="item">
+    <!-- 当路由激活时添加selected类 -->
+    <router-link to="/money" class="item" active-class="selected">
       <!-- 像Icon组件传递svg的文件名 -->
       <Icon name="money" />
       <span>记账</span>
     </router-link>
-    <router-link to="/labels" class="item">
+    <router-link to="/labels" class="item" active-class="selected">
       <Icon name="labels" />
       <span>标签</span>
     </router-link>
-    <router-link to="/statistics" class="item">
+    <router-link to="/statistics" class="item" active-class="selected">
       <Icon name="statistics" />
       <span>统计</span>
     </router-link>
@@ -37,6 +38,9 @@ nav {
       width: 32px;
       height: 32px;
     }
+  }
+  .item.selected {
+    color: orangered;
   }
 }
 </style>
