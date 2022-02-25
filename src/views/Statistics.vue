@@ -1,17 +1,11 @@
 <template>
   <div>
-    statistics.vue
-    <Nav/>
-    
+    <Layout>
+      <div class="content">statistics.vue</div>
+    </Layout>
   </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
-
-<style>
-
-</style>

@@ -1,17 +1,14 @@
 <template>
   <div>
-    labels.vue
-    <Nav/>
-    
+    <Layout>
+      <div class="content">labels.vue</div>
+    </Layout>
   </div>
 </template>
 
-<script>
-export default {
-
-}
+<script lang='ts'>
+export default {};
 </script>
 
 <style>
-
 </style>
