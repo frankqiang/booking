@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Nav/>
     labels.vue
   </div>
 </template>

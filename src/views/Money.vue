@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Nav/>
     money.vue
   </div>
 </template>
