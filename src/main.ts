@@ -7,13 +7,17 @@ import store from './store'
 import Nav from './views/Nav.vue'
 // 引入Layout组件
 import Layout from './views/Layout.vue'
+// 引入Layout组件
+import Icon from './views/Icon.vue'
 
 Vue.config.productionTip = false
 
-// 注册全局组件
+// 注册全局Nav组件
 Vue.component('Nav',Nav)
 // 注册全局Layout组件
 Vue.component('Layout',Layout)
+// 注册全局Icon组件
+Vue.component('Icon',Icon)
 
 new Vue({
   router,
