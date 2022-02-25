@@ -1,7 +1,8 @@
 <template>
   <div>
-    <Nav/>
     money.vue
+    <Nav/>
+    
   </div>
 </template>
 
