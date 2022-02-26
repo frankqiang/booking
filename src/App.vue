@@ -11,16 +11,14 @@ export default {
 </script>
 
 <style lang="scss">
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import './assets/style/reset.scss';
+@import './assets/style/helper.scss';
 body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   line-height: 1.5;
-}
-a {
-  text-decoration: none;
-  color: inherit;
+  // 全局字体
+  font-family: $font-black;
+  color: #333;
 }
 </style>
