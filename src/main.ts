@@ -4,11 +4,11 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 // 引入Nav组件
-import Nav from './views/Nav.vue'
+import Nav from './components/Nav.vue'
 // 引入Layout组件
-import Layout from './views/Layout.vue'
+import Layout from './components/Layout.vue'
 // 引入Layout组件
-import Icon from './views/Icon.vue'
+import Icon from './components/Icon.vue'
 
 Vue.config.productionTip = false
 
