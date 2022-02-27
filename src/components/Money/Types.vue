@@ -9,16 +9,16 @@
 
 <script lang='ts'>
 import Vue from 'vue';
-import { Component } from 'vue-property-decorator';
+import { Component, Watch, Prop } from 'vue-property-decorator';
 
 @Component
 export default class Types extends Vue {
-  type = '-'; // ’-‘表示支出，’+‘表示收入
+  @Prop() readonly type!: string; // ’-‘表示支出，’+‘表示收入
   selectType(type: string) {
     if (type !== '-' && type !== '+') {
-      alert('1');
+      throw new Error('type is unknown');
     }
-    this.type = type;
+    this.$emit('update:type', type);
   }
 }
 </script>
