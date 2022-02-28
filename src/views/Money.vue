@@ -1,6 +1,7 @@
 import content from '../custom';
 <template>
   <Layout classPrefix="layout">
+    {{record}}
     <Tags :dataSource.sync="tags" @update:value="onUpdateTag" />
     <div class="notes">
       <Notes fieldName="备注" @update:value="onUpdateNotes" placeholder="在这里输入备注哦" />

@@ -3,7 +3,12 @@
     <label class="notes">
       {{value}}
       <span class="name">{{fieldName}}</span>
-      <input type="text" :placeholder="placeholder" v-model="value" />
+      <input
+        type="text"
+        :placeholder="placeholder"
+        :value="value"
+        @input="onValueChanged($event.target.value)"
+      />
     </label>
   </div>
 </template>
@@ -14,7 +19,7 @@ import { Component, Prop, Watch } from 'vue-property-decorator';
 
 @Component
 export default class Notes extends Vue {
-  value = '';
+  @Prop({ default: '' }) readonly value!: string;
   @Prop({ required: true }) fieldName!: string;
   @Prop() placeholder?: string;
   @Watch('value')
