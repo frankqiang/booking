@@ -2,7 +2,7 @@ import content from '../custom';
 <template>
   <Layout classPrefix="layout">
     <Tags :dataSource.sync="tags" @update:value="onUpdateTag" />
-    <Notes @update:value="onUpdateNotes" />
+    <Notes fieldName="备注" @update:value="onUpdateNotes" placeholder="在这里输入备注哦" />
     <Types @update:value="onUpdateType" :type.sync="record.type" />
     <NumberPad @update:value="onUpdateAmount" @submit="saveRecord" />
   </Layout>
