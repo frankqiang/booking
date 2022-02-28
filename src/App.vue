@@ -21,6 +21,7 @@ body {
   font-family: $font-black;
   font-size: 16px;
   color: #333;
+  background: #f5f5f5;
 }
 .clearfix::after {
   content: '';
