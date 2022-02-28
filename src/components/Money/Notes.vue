@@ -1,7 +1,6 @@
 <template>
   <div>
     <label class="notes">
-      {{value}}
       <span class="name">{{fieldName}}</span>
       <input
         type="text"

@@ -1,4 +1,3 @@
-import EditLabel from '@/views/EditLabel.vue';
 <template>
   <Layout>
     <div class="navBar">
@@ -7,7 +6,7 @@ import EditLabel from '@/views/EditLabel.vue';
       <span class="rightIcon"></span>
     </div>
     <div class="form-wrapper">
-      <Notes fieldName="标签名" placeholder="请输入标签名哦" />
+      <Notes :value="tag.name" fieldName="标签名" placeholder="请输入标签名哦" />
     </div>
 
     <Button>删除标签</Button>
@@ -24,15 +23,14 @@ import Button from '../components/Button.vue';
   components: { Notes, Button },
 })
 export default class EditLabel extends Vue {
+  tag?: { id: string; name: string } = undefined;
   created() {
-    console.log(this.$router);
-
     const id = this.$route.params.id;
     tagListModel.fetch();
     const tags = tagListModel.data;
     const tag = tags.filter((t) => t.id === id)[0];
     if (tag) {
-      console.log(tag);
+      this.tag = tag;
     } else {
       this.$router.replace('/404');
     }
