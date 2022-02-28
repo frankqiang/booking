@@ -2,7 +2,9 @@ import content from '../custom';
 <template>
   <Layout classPrefix="layout">
     <Tags :dataSource.sync="tags" @update:value="onUpdateTag" />
-    <Notes fieldName="备注" @update:value="onUpdateNotes" placeholder="在这里输入备注哦" />
+    <div class="notes">
+      <Notes fieldName="备注" @update:value="onUpdateNotes" placeholder="在这里输入备注哦" />
+    </div>
     <Types @update:value="onUpdateType" :type.sync="record.type" />
     <NumberPad @update:value="onUpdateAmount" @submit="saveRecord" />
   </Layout>
@@ -60,11 +62,14 @@ export default class Money extends Vue {
 }
 </script>
 // 向子组件layout传递样式，因为下方的style写了scoped所以应用不到layout，只能在写一个style
-<style lang="scss">
+<style lang="scss" scoped>
 .layout-content {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+}
+.notes {
+  padding: 12px 0;
 }
 </style>
 

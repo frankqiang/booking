@@ -50,10 +50,10 @@ export default class Tags extends Vue {
   flex-grow: 1;
   font-size: 14px;
   padding: 16px;
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  background: white;
   > .current {
     display: flex;
     overflow: auto;
