@@ -6,7 +6,7 @@
         :key="index"
         :class="{selected:selectedTags.indexOf(tag)>=0}"
         @click="toggle(tag)"
-      >{{tag}}</li>
+      >{{tag.name}}</li>
     </ul>
     <div class="new">
       <button @click="create">新增标签</button>
