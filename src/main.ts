@@ -22,6 +22,16 @@ Vue.component("Icon", Icon);
 
 // 声明全局属性，用来保存fetch到的数据
 window.tagList = tagListModel.fetch();
+// 声明全局属性，用来创建tag
+window.createTag = (name: string) => {
+	const message = tagListModel.create(name);
+	if (message === "duplicated") {
+		window.alert("标签名重复了");
+	} else if (message === "success") {
+		window.alert("添加成功");
+	}
+};
+
 new Vue({
 	router,
 	store,
