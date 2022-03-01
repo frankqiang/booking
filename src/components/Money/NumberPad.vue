@@ -75,7 +75,7 @@ export default class NumberPad extends Vue {
     font-family: Consolas, monospace;
     padding: 9px 16px;
     text-align: right;
-    height: 78px;
+    height: 64px;
   }
   .buttons {
     // 继承%clearFix类

@@ -35,6 +35,7 @@ export default class Notes extends Vue {
   align-items: center;
   font-size: 14px;
   padding-left: 16px;
+  padding: 12px 0;
 
   .name {
     padding-right: 16px;

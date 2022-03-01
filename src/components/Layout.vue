@@ -1,4 +1,3 @@
-import content from '../custom';
 <template>
   <div class="layout-wrapper">
     <div class="content" :class="classPrefix && `${classPrefix}-content`">
@@ -20,6 +19,7 @@ export default {
 .layout-wrapper {
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   height: 100vh;
 }
 .layout-wrapper .content {
