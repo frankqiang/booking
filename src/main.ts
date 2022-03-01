@@ -10,6 +10,7 @@ import Layout from "./components/Layout.vue";
 // 引入Layout组件
 import Icon from "./components/Icon.vue";
 import tagListModel from "@/models/tagListModel";
+import recordListModel from "./models/recordListModel";
 
 Vue.config.productionTip = false;
 
@@ -19,7 +20,15 @@ Vue.component("Nav", Nav);
 Vue.component("Layout", Layout);
 // 注册全局Icon组件
 Vue.component("Icon", Icon);
+/* record 数据仓库 */
+// 获取tag的name的列表
+window.recordList = recordListModel.fetch();
+// 创建一个tag的name
+window.createRecord = (record: RecordItem) => {
+	return recordListModel.create(record);
+};
 
+/* tag 数据仓库 */
 // 声明全局属性，用来保存fetch到的数据
 window.tagList = tagListModel.fetch();
 window.findTag = (id: string) => {
