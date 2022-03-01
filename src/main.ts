@@ -22,6 +22,9 @@ Vue.component("Icon", Icon);
 
 // 声明全局属性，用来保存fetch到的数据
 window.tagList = tagListModel.fetch();
+window.findTag = (id: string) => {
+	return window.tagList.filter((t) => t.id === id)[0];
+};
 // 声明全局属性，用来创建tag
 window.createTag = (name: string) => {
 	const message = tagListModel.create(name);
@@ -31,7 +34,14 @@ window.createTag = (name: string) => {
 		window.alert("添加成功");
 	}
 };
-
+// 声明全局属性，用来删除tag
+window.removeTag = (id: string) => {
+	return tagListModel.remove(id);
+};
+// 声明全局属性，用来更新tag
+window.updateTag = (id: string, name: string) => {
+	return tagListModel.update(id, name);
+};
 new Vue({
 	router,
 	store,
