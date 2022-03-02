@@ -3,7 +3,7 @@
     <div class="navBar">
       <Icon class="leftIcon" name="left" @click="goBack" />
       <span class="title">编辑标签</span>
-      <span class="rightIcon"></span>
+      <span class="rightIcon" />
     </div>
     <div class="form-wrapper">
       <Notes :value="tag.name" fieldName="标签名" placeholder="请输入标签名哦" @update:value="update" />
@@ -19,15 +19,14 @@ import { Component } from 'vue-property-decorator';
 import Notes from '../components/Money/Notes.vue';
 import Button from '../components/Button.vue';
 import router from '../router/index';
-import store from '@/store/index2';
+
 @Component({
   components: { Notes, Button },
 })
 export default class EditLabel extends Vue {
   tag?: Tag = undefined;
   created() {
-    const id = this.$route.params.id;
-    this.tag = store.findTag(id);
+    //this.tag ={} //store.findTag(this.$route.params.id);
     if (!this.tag) {
       this.$router.replace('/404');
     }
@@ -35,16 +34,17 @@ export default class EditLabel extends Vue {
 
   update(name: string) {
     if (this.tag) {
-      store.updateTag(this.tag.id, name);
+      // store.updateTag(this.tag.id, name);
     }
   }
   remove() {
     if (this.tag) {
-      if (store.removeTag(this.tag.id)) {
-        this.$router.back();
-      } else {
-        window.alert('删除失败');
-      }
+      return;
+      // if (store.removeTag(this.tag.id)) {
+      //   this.$router.back();
+      // } else {
+      //   window.alert('删除失败');
+      // }
     }
   }
   goBack() {
