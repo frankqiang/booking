@@ -18,7 +18,7 @@ import Tabs from '../components/Tabs.vue';
 import recordTypeList from '../constants/recordTypeList';
 
 @Component({
-  components: { Tags, Notes, Types, NumberPad, Tabs },
+  components: { Tags, Notes, NumberPad, Tabs },
 })
 export default class Money extends Vue {
   get recordList() {
