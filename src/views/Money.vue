@@ -3,7 +3,7 @@ import content from '../custom';
   <Layout classPrefix="layout">
     <Tags />
     <Notes fieldName="备注" @update:value="onUpdateNotes" placeholder="在这里输入备注哦" />
-    <Types @update:value="onUpdateType" :type.sync="record.type" />
+    <Types @update:value="onUpdateType" :value.sync="record.type" />
     <NumberPad @update:value="onUpdateAmount" @submit="saveRecord" />
   </Layout>
 </template>
