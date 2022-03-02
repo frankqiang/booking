@@ -3,8 +3,8 @@ import content from '../custom';
   <Layout classPrefix="layout">
     <Tags />
     <Notes fieldName="备注" @update:value="onUpdateNotes" placeholder="在这里输入备注哦" />
-    <Types @update:value="onUpdateType" :value.sync="record.type" />
-    <NumberPad @update:value="onUpdateAmount" @submit="saveRecord" />
+    <Tabs :dataSource="recordTypeList" :value.sync="record.type" />
+    <NumberPad :value.sync="record.amount" @submit="saveRecord" />
   </Layout>
 </template>
 
@@ -15,14 +15,18 @@ import Types from '../components/Money/Types.vue';
 import NumberPad from '../components/Money/NumberPad.vue';
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
+import Tabs from '../components/Tabs.vue';
+import recordTypeList from '../constants/recordTypeList';
 
 @Component({
-  components: { Tags, Notes, Types, NumberPad },
+  components: { Tags, Notes, Types, NumberPad, Tabs },
 })
 export default class Money extends Vue {
   get recordList() {
     return this.$store.state.recordList;
   }
+
+  recordTypeList = recordTypeList;
   // 初始化
   record: RecordItem = {
     tags: [],
