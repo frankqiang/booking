@@ -19,6 +19,7 @@ import { Component } from 'vue-property-decorator';
 import Notes from '../components/Money/Notes.vue';
 import Button from '../components/Button.vue';
 import router from '../router/index';
+import store from '../store/index';
 
 @Component({
   components: { Notes, Button },
@@ -29,6 +30,7 @@ export default class EditLabel extends Vue {
   }
   created() {
     const id = this.$route.params.id;
+    this.$store.commit('fetchTags');
     this.$store.commit('setCurrentTag', id);
     if (!this.tag) {
       this.$router.replace('/404');
@@ -37,17 +39,12 @@ export default class EditLabel extends Vue {
 
   update(name: string) {
     if (this.tag) {
-      // store.updateTag(this.tag.id, name);
+      this.$store.commit('updateTag', { id: this.tag.id, name });
     }
   }
   remove() {
     if (this.tag) {
-      return;
-      // if (store.removeTag(this.tag.id)) {
-      //   this.$router.back();
-      // } else {
-      //   window.alert('删除失败');
-      // }
+      this.$store.commit('removeTag', this.tag.id);
     }
   }
   goBack() {
