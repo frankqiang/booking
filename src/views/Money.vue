@@ -1,7 +1,7 @@
 import content from '../custom';
 <template>
   <Layout classPrefix="layout">
-    <Tags :dataSource.sync="tags" @update:value="onUpdateTag" />
+    <Tags />
     <Notes fieldName="备注" @update:value="onUpdateNotes" placeholder="在这里输入备注哦" />
     <Types @update:value="onUpdateType" :type.sync="record.type" />
     <NumberPad @update:value="onUpdateAmount" @submit="saveRecord" />
@@ -19,6 +19,11 @@ import store from '@/store/index2';
 
 @Component({
   components: { Tags, Notes, Types, NumberPad },
+  computed: {
+    recordList() {
+      return store.recordList;
+    },
+  },
 })
 export default class Money extends Vue {
   // 初始化
@@ -28,12 +33,7 @@ export default class Money extends Vue {
     type: '-',
     amount: 0,
   };
-  recordList = store.recordList;
-  tags = store.tagList;
 
-  onUpdateTag(value: string[]) {
-    this.record.tags = value;
-  }
   onUpdateNotes(value: string) {
     this.record.notes = value;
   }
