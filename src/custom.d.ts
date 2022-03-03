@@ -5,6 +5,7 @@ declare module '*.svg' {
 // 定义全局类型，可以在任何文件中使用
 type RootState = {
 	recordList: RecordItem[];
+	createRecordError: Error | null;
 	tagList: Tag[];
 	currentTag?: Tag;
 };
