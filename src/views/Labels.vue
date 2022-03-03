@@ -33,6 +33,9 @@ export default class Labels extends Vue {
       return window.alert('标签名不能为空');
     }
     this.$store.commit('createTag', name);
+    if (this.$store.state.createTagError) {
+      window.alert('标签名重复了！');
+    }
   }
 }
 </script>
