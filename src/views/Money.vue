@@ -1,4 +1,3 @@
-import content from '../custom';
 <template>
   <Layout classPrefix="layout">
     <Tags />
