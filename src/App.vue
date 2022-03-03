@@ -28,4 +28,9 @@ body {
   display: block;
   clear: both;
 }
+#app {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
 </style>
