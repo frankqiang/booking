@@ -32,6 +32,7 @@ import recordTypeList from '../constants/recordTypeList';
 import dayjs from 'dayjs';
 import clone from '@/lib/clone';
 import Chart from '@/components/Chart.vue';
+import _ from 'lodash';
 
 const oneDay = 86400 * 1000;
 @Component({
@@ -61,7 +62,39 @@ export default class Statistics extends Vue {
     }
   }
 
+  get y() {
+    const today = new Date();
+    const array = [];
+    for (let i = 0; i <= 29; i++) {
+      //根据当前时间得到前30天的年月日
+      const dateString = dayjs(today).subtract(i, 'day').format('YYYY-MM-DD');
+      // 根据前30天的年月日从recordList中找与之对应的年月日的那一个对象
+      const found = _.find(this.recordList, { createdAt: dateString });
+      // 将找到的found中的amount给value，然后生产一个新的数组
+      // 新的数组date和value都和recordList当中的createdAt和amount一一对应
+      array.push({
+        date: dateString,
+        value: found ? found.amount : 0,
+      });
+    }
+    // 将数组排序
+    array.sort((a, b) => {
+      if (a.date > b.date) {
+        return 1;
+      } else if (a.date === b.date) {
+        return 0;
+      } else {
+        return -1;
+      }
+    });
+    // console.log(array);
+    return array;
+  }
   get x() {
+    //得到date
+    const keys = this.y.map((item) => item.date);
+    // 得到value
+    const values = this.y.map((item) => item.value);
     return {
       grid: {
         //去掉echarts两边默认的padding
@@ -70,37 +103,7 @@ export default class Statistics extends Vue {
       },
       xAxis: {
         type: 'category',
-        data: [
-          '2',
-          '3',
-          '4',
-          '5',
-          '6',
-          '7',
-          '8',
-          '9',
-          '10',
-          '11',
-          '12',
-          '13',
-          '14',
-          '15',
-          '16',
-          '17',
-          '18',
-          '19',
-          '20',
-          '21',
-          '22',
-          '23',
-          '24',
-          '25',
-          '26',
-          '27',
-          '28',
-          '29',
-          '30',
-        ],
+        data: keys,
         axisTick: { alignWithLabel: true }, //让x轴的对齐线和点对齐
         axisLine: { lineStyle: { color: '#666' } }, //修改x轴的线条颜色
       },
@@ -113,11 +116,7 @@ export default class Statistics extends Vue {
           symbol: 'circle', //实心点点
           symbolSize: 12, //把每个坐标点变大
           itemStyle: { borderWidth: 1, color: '#666', borderColor: '#666' }, //修改线条和点的颜色
-          data: [
-            820, 932, 901, 1290, 1330, 1320, 820, 932, 901, 1290, 1330, 1320,
-            820, 932, 901, 1290, 1330, 1320, 820, 932, 901, 1290, 1330, 1320,
-            820, 932, 901, 1290, 1330, 1320,
-          ],
+          data: values,
           type: 'line',
         },
       ],
