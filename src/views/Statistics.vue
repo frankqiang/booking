@@ -1,7 +1,10 @@
 <template>
   <Layout>
     <Tabs classPrefix="type" :dataSource="recordTypeList" :value.sync="type" />
-    <Chart :options="x" />
+    <div class="chart-wrapper" ref="chartWrapper">
+      <Chart class="chart" :options="x" />
+    </div>
+
     <ol v-if="groupedList.length>0">
       <li v-for="(group,index) in groupedList" :key="index">
         <h3 class="title">
@@ -38,6 +41,9 @@ export default class Statistics extends Vue {
   tagString(tags: Tag[]) {
     return tags.length === 0 ? '无' : tags.map((t) => t.name).join('，');
   }
+  mounted() {
+    (this.$refs.chartWrapper as HTMLDivElement).scrollLeft = 9999;
+  }
   beautify(string: string) {
     const day = dayjs(string);
     const now = dayjs();
@@ -56,10 +62,14 @@ export default class Statistics extends Vue {
 
   get x() {
     return {
+      grid: {
+        //去掉echarts两边默认的padding
+        left: 0,
+        right: 0,
+      },
       xAxis: {
         type: 'category',
         data: [
-          '1',
           '2',
           '3',
           '4',
@@ -90,12 +100,18 @@ export default class Statistics extends Vue {
           '29',
           '30',
         ],
+        axisTick: { alignWithLabel: true }, //让x轴的对齐线和点对齐
+        axisLine: { lineStyle: { color: '#666' } }, //修改x轴的线条颜色
       },
       yAxis: {
         type: 'value',
+        show: false,
       },
       series: [
         {
+          symbol: 'circle', //实心点点
+          symbolSize: 12, //把每个坐标点变大
+          itemStyle: { borderWidth: 1, color: '#666', borderColor: '#666' }, //修改线条和点的颜色
           data: [
             820, 932, 901, 1290, 1330, 1320, 820, 932, 901, 1290, 1330, 1320,
             820, 932, 901, 1290, 1330, 1320, 820, 932, 901, 1290, 1330, 1320,
@@ -104,7 +120,12 @@ export default class Statistics extends Vue {
           type: 'line',
         },
       ],
-      tooltip: { show: true },
+      tooltip: {
+        show: true,
+        triggerOn: 'click',
+        position: 'top',
+        formatter: '{c}',
+      }, //显示点击原点后显示对应信息
     };
   }
 
@@ -195,5 +216,14 @@ export default class Statistics extends Vue {
 .noResult {
   padding: 16px;
   text-align: center;
+}
+.chart {
+  width: 430%;
+  &-wrapper {
+    overflow: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }
 </style>
