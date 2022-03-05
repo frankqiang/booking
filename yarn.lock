@@ -1252,6 +1252,13 @@
   dependencies:
     "@types/node" "*"
 
+"@types/echarts@^4.9.13":
+  version "4.9.13"
+  resolved "https://registry.npmmirror.com/@types/echarts/-/echarts-4.9.13.tgz#b4a56f8ff471af65dd54b196af6972629d6745d4"
+  integrity sha512-xqZ21MXOBU5i+BywnxAi0He+M6lsRtANBvbqJHmqM8T64Lx7azHJWbv/vSKVJfEbv3XyYpxeDhpV7gFi5mfgeA==
+  dependencies:
+    "@types/zrender" "*"
+
 "@types/express-serve-static-core@*", "@types/express-serve-static-core@^4.17.18":
   version "4.17.28"
   resolved "https://registry.npmmirror.com/@types/express-serve-static-core/-/express-serve-static-core-4.17.28.tgz"
@@ -1458,6 +1465,11 @@
   integrity sha512-qCxJE1qgz2y0hA4pIxjBR+PelCH0U5CK1XJXFwCNqfmliatKp47UCXXE9Dyk1OXBDLvsCF57TqQEJaeLfDYEOQ==
   dependencies:
     "@types/yargs-parser" "*"
+
+"@types/zrender@*":
+  version "4.0.1"
+  resolved "https://registry.npmmirror.com/@types/zrender/-/zrender-4.0.1.tgz#6280c40207927ce086be24b4391d668cd330e956"
+  integrity sha512-IyTRf30jPOXK1+1RChI/78U6aV9hyWYf/vhL96Vt66oDz9es/BDjeKpvbNZSOHVA7zAReOwJcmdZS5AGAqhygw==
 
 "@typescript-eslint/eslint-plugin@4.28.4":
   version "4.28.4"
@@ -4164,6 +4176,13 @@ ecc-jsbn@~0.1.1:
   dependencies:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
+
+echarts@4.8.0:
+  version "4.8.0"
+  resolved "https://registry.npmmirror.com/echarts/-/echarts-4.8.0.tgz#b2c1cfb9229b13d368ee104fc8eea600b574d4c4"
+  integrity sha512-YwShpug8fWngj/RlgxDaYrLBoD+LsZUArrusjNPHpAF+is+gGe38xx4W848AwWMGoi745t3OXM52JedNrv+F6g==
+  dependencies:
+    zrender "4.3.1"
 
 editorconfig@^0.15.3:
   version "0.15.3"
@@ -11260,3 +11279,8 @@ yorkie@^2.0.0:
     is-ci "^1.0.10"
     normalize-path "^1.0.0"
     strip-indent "^2.0.0"
+
+zrender@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.npmmirror.com/zrender/-/zrender-4.3.1.tgz#baf8aa6dc8187a2f819692d7d5f9bedfa2b90fa3"
+  integrity sha512-CeH2TpJeCdG0TAGYoPSAcFX2ogdug1K7LIn9UO/q9HWqQ54gWhrMAlDP9AwWYMUDhrPe4VeazQ4DW3msD96nUQ==
