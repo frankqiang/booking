@@ -106,6 +106,12 @@ export default class Statistics extends Vue {
         data: keys,
         axisTick: { alignWithLabel: true }, //让x轴的对齐线和点对齐
         axisLine: { lineStyle: { color: '#666' } }, //修改x轴的线条颜色
+        axisLabel: {
+          formatter: function (value: string, index: number) {
+            // x坐标只显示月和天
+            return value.substr(5);
+          },
+        },
       },
       yAxis: {
         type: 'value',
