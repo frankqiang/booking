@@ -1,6 +1,9 @@
 <template>
   <Layout classPrefix="layout">
     <Tags @update:value="record.tags=$event" />
+    <div class="createdAt">
+      <Notes type="date" fieldName="日期" placeholder="在这里输入日期哦" :value.sync="record.createdAt" />
+    </div>
     <div class="notes">
       <Notes
         fieldName="备注"
@@ -38,6 +41,7 @@ export default class Money extends Vue {
     notes: '',
     type: '-',
     amount: 0,
+    createdAt: new Date().toISOString(),
   };
   created() {
     this.$store.commit('fetchRecords');
@@ -63,9 +67,6 @@ export default class Money extends Vue {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-}
-.notes {
-  padding: 0 16px;
 }
 </style>
 
