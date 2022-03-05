@@ -2,7 +2,7 @@
   <Layout>
     <Tabs classPrefix="type" :dataSource="recordTypeList" :value.sync="type" />
     <div class="chart-wrapper" ref="chartWrapper">
-      <Chart class="chart" :options="x" />
+      <Chart class="chart" :options="chartOptions" />
     </div>
 
     <ol v-if="groupedList.length>0">
@@ -62,26 +62,26 @@ export default class Statistics extends Vue {
     }
   }
 
-  get y() {
+  get keyValueList() {
     const today = new Date();
     const array = [];
     for (let i = 0; i <= 29; i++) {
       //根据当前时间得到前30天的年月日
       const dateString = dayjs(today).subtract(i, 'day').format('YYYY-MM-DD');
-      // 根据前30天的年月日从recordList中找与之对应的年月日的那一个对象
-      const found = _.find(this.recordList, { createdAt: dateString });
-      // 将找到的found中的amount给value，然后生产一个新的数组
-      // 新的数组date和value都和recordList当中的createdAt和amount一一对应
+      // 根据前30天的年月日从groupedList中找与之对应的年月日的那一个对象
+      const found = _.find(this.groupedList, { title: dateString });
+      // 将找到的found中的total给value，然后生产一个新的数组
+      // 新的数组key和value都和groupedList当中的title和total一一对应
       array.push({
-        date: dateString,
-        value: found ? found.amount : 0,
+        key: dateString,
+        value: found ? found.total : 0,
       });
     }
     // 将数组排序
     array.sort((a, b) => {
-      if (a.date > b.date) {
+      if (a.key > b.key) {
         return 1;
-      } else if (a.date === b.date) {
+      } else if (a.key === b.key) {
         return 0;
       } else {
         return -1;
@@ -90,11 +90,11 @@ export default class Statistics extends Vue {
     // console.log(array);
     return array;
   }
-  get x() {
-    //得到date
-    const keys = this.y.map((item) => item.date);
+  get chartOptions() {
+    //得到key
+    const keys = this.keyValueList.map((item) => item.key);
     // 得到value
-    const values = this.y.map((item) => item.value);
+    const values = this.keyValueList.map((item) => item.value);
     return {
       grid: {
         //去掉echarts两边默认的padding
