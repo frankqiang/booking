@@ -3,51 +3,52 @@
     <div class="navBar">
       <Icon class="leftIcon" name="left" @click="goBack" />
       <span class="title">编辑标签</span>
-      <span class="rightIcon" />
+      <Icon class="rightIcon" name="delete" @click="remove" />
     </div>
     <div class="form-wrapper">
       <Notes :value="currentTag.name" fieldName="标签名" placeholder="请输入标签名哦" @update:value="update" />
     </div>
 
-    <Button @click="remove">删除标签</Button>
+    <!-- <Button @click="remove">删除标签</Button> -->
   </Layout>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import { Component } from 'vue-property-decorator';
-import Notes from '../components/Money/Notes.vue';
-import Button from '../components/Button.vue';
-import router from '../router/index';
+import Vue from 'vue'
+import { Component } from 'vue-property-decorator'
+import Notes from '../components/Money/Notes.vue'
+import Button from '../components/Button.vue'
 
 @Component({
   components: { Notes, Button },
 })
 export default class EditLabel extends Vue {
   get currentTag() {
-    return this.$store.state.currentTag;
+    return this.$store.state.currentTag
   }
   created() {
-    const id = this.$route.params.id;
-    this.$store.commit('fetchTags');
-    this.$store.commit('setCurrentTag', id);
+    const id = this.$route.params.id
+    this.$store.commit('fetchTags')
+    this.$store.commit('setCurrentTag', id)
     if (!this.currentTag) {
-      this.$router.replace('/404');
+      this.$router.replace('/404')
     }
   }
 
   update(name: string) {
     if (this.currentTag) {
-      this.$store.commit('updateTag', { id: this.currentTag.id, name });
+      this.$store.commit('updateTag', { id: this.currentTag.id, name })
     }
+    window.alert('修改标签成功')
   }
   remove() {
     if (this.currentTag) {
-      this.$store.commit('removeTag', this.currentTag.id);
+      this.$store.commit('removeTag', this.currentTag.id)
     }
+    window.alert('删除标签成功')
   }
   goBack() {
-    this.$router.back();
+    this.$router.back()
   }
 }
 </script>

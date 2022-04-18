@@ -1,5 +1,6 @@
 <template>
   <Layout classPrefix="layout">
+    <Tabs :dataSource="recordTypeList" :value.sync="record.type" />
     <Tags @update:value="record.tags=$event" />
     <div class="createdAt">
       <Notes type="date" fieldName="日期" placeholder="在这里输入日期哦" :value.sync="record.createdAt" />
@@ -12,7 +13,7 @@
         :value.sync="record.notes"
       />
     </div>
-    <Tabs :dataSource="recordTypeList" :value.sync="record.type" />
+
     <NumberPad :value.sync="record.amount" @submit="saveRecord" />
   </Layout>
 </template>

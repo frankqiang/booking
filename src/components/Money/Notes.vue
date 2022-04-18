@@ -23,22 +23,26 @@
 </template>
 
 <script lang='ts'>
-import dayjs from 'dayjs';
-import Vue from 'vue';
-import { Component, Prop, Watch } from 'vue-property-decorator';
+import dayjs from 'dayjs'
+import Vue from 'vue'
+import { Component, Prop, Watch } from 'vue-property-decorator'
 
 @Component
 export default class Notes extends Vue {
-  @Prop({ default: '' }) readonly value!: string;
-  @Prop({ required: true }) fieldName!: string;
-  @Prop() placeholder?: string;
-  @Prop() type?: string;
+  @Prop({ default: '' }) readonly value!: string
+  @Prop({ required: true }) fieldName!: string
+  @Prop() placeholder?: string
+  @Prop() type?: string
 
   onValueChanged(value: string) {
-    this.$emit('update:value', value);
+    if (!value) {
+      alert('标签名不能为空')
+      return
+    }
+    this.$emit('update:value', value)
   }
   x(isoString: string) {
-    return dayjs(isoString).format('YYYY-MM-DD');
+    return dayjs(isoString).format('YYYY-MM-DD')
   }
 }
 </script>
