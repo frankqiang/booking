@@ -15,36 +15,36 @@
 </template>
 
 <script lang='ts'>
-import Vue from 'vue';
-import { Component, Prop } from 'vue-property-decorator';
+import Vue from 'vue'
+import { Component, Prop } from 'vue-property-decorator'
 
 @Component
 export default class Tags extends Vue {
-  selectedTags: string[] = [];
+  selectedTags: string[] = []
 
   get tagList() {
-    return this.$store.state.tagList;
+    return this.$store.state.tagList
   }
   created() {
-    this.$store.commit('fetchTags');
+    this.$store.commit('fetchTags')
   }
   toggle(tag: string) {
-    const tagIndex = this.selectedTags.indexOf(tag);
+    const tagIndex = this.selectedTags.indexOf(tag)
     if (tagIndex >= 0) {
-      this.selectedTags.splice(tagIndex, 1);
+      this.selectedTags.splice(tagIndex, 1)
     } else {
-      this.selectedTags.push(tag);
+      this.selectedTags.push(tag)
     }
-    this.$emit('update:value', this.selectedTags);
+    this.$emit('update:value', this.selectedTags)
   }
   create() {
-    const name = window.prompt('请输入标签名');
+    const name = window.prompt('请输入标签名')
     if (!name) {
-      return window.alert('标签名不能为空');
+      return window.alert('标签名不能为空')
     }
-    this.$store.commit('createTag', name);
+    this.$store.commit('createTag', name)
     if (this.$store.state.createTagError) {
-      window.alert('标签名重复了！');
+      window.alert('标签名重复了！')
     }
   }
 }
@@ -72,8 +72,9 @@ export default class Tags extends Vue {
       line-height: 24px;
       text-align: center;
       border-radius: (24px/2);
-      padding: 0 16px;
+      padding: 0 8px;
       margin-right: 12px;
+      margin-top: 8px;
       &.selected {
         background: darken($color: $bg, $amount: 50%);
         color: white;

@@ -7,7 +7,7 @@
           :type="type || 'text'"
           :placeholder="placeholder"
           :value="x(value)"
-          @input="onValueChanged($event.target.value)"
+          @change="onValueChanged($event.target.value)"
         />
       </template>
       <template v-else>
@@ -15,7 +15,7 @@
           :type="type || 'text'"
           :placeholder="placeholder"
           :value="value"
-          @input="onValueChanged($event.target.value)"
+          @change="onValueChanged($event.target.value)"
         />
       </template>
     </label>
@@ -53,7 +53,7 @@ export default class Notes extends Vue {
   display: flex;
   align-items: center;
   font-size: 14px;
-  padding: 12px 16px;
+  padding: 6px 16px;
 
   .name {
     padding-right: 16px;
